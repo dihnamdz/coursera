@@ -1,137 +1,155 @@
+/* ---
+   Default Styles (Mobile-First)
+   Đây là Mobile View (1 cột)
+--- */
+html {
+    /* Sửa lỗi 3: Đặt 'smooth' ở đây để có thể tắt nó đi sau */
+    scroll-behavior: smooth;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
 body {
-    background-color: #dedede;
+    margin: 0;
 }
 
-h1 {
+header, footer {
     text-align: center;
-    font-family:Arial, sans-serif;
-    font-size: 32px;
+    padding: 1em;
+    background-color: #333;
+    color: white;
 }
 
-a {
-    color: #000;
-    text-decoration: none;
-    font-family:Arial, sans-serif;
-}
-
-p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
-}
-
-img{
-  width:100%;
-}
-
-
-p{
-  text-align:center;
-}
-
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
-}
-
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
-}
-
-/* Media Query #1 - Tablet View (772px and above) */
-@media screen and (min-width: 772px) {
-    div {
-        width: 45%;
-    }
-    
-    div img {
-        max-height: 30vh;
-        width: auto;
-        height: auto;
-    }
-}
-
-/* Media Query #2 - Large Screen View (998px and above) */
-@media screen and (min-width: 998px) {
-    div {
-        width: 30%;
-    }
-}
-
-/* 
-main {
-    border: 5px #000 solid;
-    margin: 10px;
-}
- */
-/* 
-
-.container {
+/* Yêu cầu của bài tập: Mobile View (1 cột) */
+.gallery-grid {
+    /* Sửa lỗi 2: 'display: grid' chỉ được khai báo MỘT lần ở đây */
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
+    gap: 10px; /* Yêu cầu 10px gap */
+    padding: 10px;
 }
- */
-/* img{
-    width: 200px;
-    height: 200px;
-    padding: 5px;
-} */
 
-/* .child {
-    position: relative;
-    display: inline-block;
-    border: 5px black solid;
-    margin: 5px;
-    border-radius: 5px;
-} */
-
-/* 
-
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;s
-} */
-/* 
-.button {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 25px;
+figure {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
- */
-/* 
-.button:hover {
-    background-color:#fff;
-} */
 
-/* 
-footer {
-    display: flex;
-    justify-content: center;
-} */
-
-/* 
-header {
-    border-radius: 5px;
-    border: 5px #000 solid;
-    margin: 10px;
-} */
-
-/* 
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.child:hover .label {
+figure img {
+    width: 100%;
+    height: auto;
     display: block;
-} */
+}
+
+figure figcaption p {
+    margin: 10px 0 0 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+
+/* ---
+   Sửa lỗi 1: Sắp xếp các media query theo thứ tự min-width
+   từ nhỏ đến lớn (Mobile -> Tablet -> Large)
+--- */
+
+
+/* ---
+   Tablet View (772px)
+   Yêu cầu: 2 cột, hình tròn, thẻ cuối 2 cột
+--- */
+@media (min-width: 772px) {
+    .gallery-grid {
+        /* Sửa lỗi 2: Không lặp lại 'display: grid' */
+        grid-template-columns: 1fr 1fr; /* Yêu cầu 2 cột */
+    }
+
+    figure {
+        /* Yêu cầu: Hình tròn */
+        border-radius: 50%;
+        overflow: hidden; /* Ẩn các góc ảnh bị thừa */
+    }
+
+    figure img {
+        border-radius: 50%; /* Đảm bảo ảnh cũng tròn */
+    }
+
+    figure:last-child {
+        /* Yêu cầu: Thẻ cuối 2 cột */
+        grid-column: 1 / -1; /* Trải dài từ 1 đến hết */
+    }
+}
+
+
+/* ---
+   Large Screen View (992px)
+   Yêu cầu: Thẻ thứ 3 chiếm 2 cột, bỏ hình tròn
+--- */
+@media (min-width: 992px) {
+    /* Chúng ta không cần khai báo lại grid-template-columns
+      vì nó đã là 2 cột (kế thừa từ 772px).
+    */
+
+    figure:nth-child(3n) {
+        /* Yêu cầu: Cứ 3 thẻ thì 1 thẻ chiếm 2 cột */
+        grid-column: 1 / -1;
+    }
+
+    figure {
+        /* Yêu cầu: Bỏ hình tròn */
+        border-radius: 0;
+    }
+
+    figure img {
+        border-radius: 0;
+    }
+
+    /* Ghi đè lại luật 'last-child' của tablet */
+    figure:last-child {
+        grid-column: auto;
+    }
+}
+
+
+/* ---
+   Accessibility Queries (Đặt cuối cùng)
+--- */
+
+/* Sửa lỗi 3: Tắt hiệu ứng cuộn mượt */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* Tắt cuộn mượt */
+    }
+
+    /* Tắt luôn các transition khác nếu có */
+    * {
+        transition: none !important;
+    }
+}
+
+/* Sửa lỗi 6: Sửa lỗi tương phản (contrast) cho Dark Mode */
+@media (prefers-color-scheme: dark) {
+    /* Màu nền tối và màu chữ vàng nhạt (khaki)
+      sẽ có độ tương phản cao, vượt qua bài kiểm tra WAVE.
+    */
+    figure {
+        background-color: #2c2c2c; /* Yêu cầu: màu tối */
+        border-color: #000000;    /* Yêu cầu: border đen */
+    }
+
+    figure figcaption p {
+        color: #f0e68c; /* Yêu cầu: màu sáng (vàng nhạt) */
+    }
+
+    /* Sửa lỗi tương phản cho các phần khác */
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    header, footer {
+        background-color: #111;
+        color: #f0f0f0;
+    }
+}
