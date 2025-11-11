@@ -1,71 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colors</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project - Responsive Site</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header>
-    <h1 id="top">Colors!</h1>
-  </header>
 
-  <main>
-    <h2>Basic Media Queries</h2>
-    <p>In this assignment you will add two media queries to the css file.</p>
-    <ul>
-      <li>The first media query should trigger at 772px and change the layout of the divs to be 45% of the viewport width. The images should have a maximum height of 30% of the viewport height.</li>
+    <header>
+        <h1>My Responsive Gallery</h1>
+    </header>
 
-      <li>The second media query should trigger at 998px and change the layout of the divs to be 30% of the viewport width.</li>
-    </ul>
-    <p>You will need to make additional changes to ensure that the divs appear next to each other and that the images are contained within the divs.  Some of these properties include display, width and max-height.</p>
+    <main class="gallery-grid">
+        <figure>
+            <img src="image-1.jpg" alt="A descriptive alt text for image 1">
+            <figcaption>
+                <p>This is the first item. I have replaced the default paragraph content.</p>
+            </figcaption>
+        </figure>
 
-    <div>
-      <img src="images/Red.jpeg" alt="Red" width="200">
-      <p class = "label">Red</p>
-    </div>
-    <div>
-      <img src="images/Orange.png" alt="Orange" width="200">
-      <p class = "label">Orange</p>
-    </div>
-    <div>
-      <img src="images/Yellow.png" alt="Yellow" width="200">
-      <p class = "label">Yellow</p>
-    </div>
-    <div>
-      <img src="images/Green.png" alt="Green" width="200">
-      <p class = "label">Green</p>
-    </div>
-    <div>
-      <img src="images/Blue.png" alt="Blue" width="200">
-      <p class = "label">Blue</p>
-    </div>
-    <div>
-      <img src="images/Indigo.jpeg" alt="Indigo" width="200">
-      <p class = "label">Indigo</p>
-    </div>
-    <div>
-      <img src="images/Purple.png" alt="Purple" width="200">
-      <p class = "label">Purple</p>
-    </div>
-    <div>
-      <img src="images/Pink.jpeg" alt="Pink" width="200">
-      <p class = "label">Pink</p>
-    </div>
-    <div>
-      <img src="images/White.png" alt="White" width="200">
-      <p class = "label">White</p>
-    </div>
-    </div>
-  </main>
+        <figure>
+            <img src="image-2.jpg" alt="A descriptive alt text for image 2">
+            <figcaption>
+                <p>This is the second item. All paragraph content has been updated.</p>
+            </figcaption>
+        </figure>
 
-  <footer>
-    <a href="#top">Jump to the Top</a>
-  </footer>
+        <figure>
+            <img src="image-3.jpg" alt="A descriptive alt text for image 3">
+            <figcaption>
+                <p>This is the third item. This one will span both columns on large screens.</p>
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="image-4.jpg" alt="A descriptive alt text for image 4">
+            <figcaption>
+                <p>This is the fourth item. Updating all content is part of the requirement.</p>
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="image-5.jpg" alt="A descriptive alt text for image 5">
+            <figcaption>
+                <p>This is the fifth item. The mobile view is single column.</p>
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="image-6.jpg" alt="A descriptive alt text for image 6">
+            <figcaption>
+                <p>This is the sixth and final item. This one spans columns on tablet view.</p>
+            </figcaption>
+        </figure>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your Name Here. All rights reserved.</p>
+    </footer>
+
 </body>
-
 </html>
